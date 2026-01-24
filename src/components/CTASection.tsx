@@ -30,7 +30,7 @@ export default function CTASection() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
               size="lg"
-              className="bg-white/10 backdrop-blur-lg border border-white/20 text-white px-10 py-6 text-lg rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+              className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-10 py-6 text-lg rounded-xl shadow-[0_0_30px_rgba(99,102,241,0.45)] border-0"
             >
               Book a Free Demo
               <motion.span
@@ -85,8 +85,8 @@ export default function CTASection() {
                 />
                 <defs>
                   <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#8b5cf6" />
-                    <stop offset="100%" stopColor="#22d3ee" />
+                    <stop offset="0%" stopColor="#f65c5c" />
+                    <stop offset="100%" stopColor="#22ee96" />
                   </linearGradient>
                 </defs>
               </svg>

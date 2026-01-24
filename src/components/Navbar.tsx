@@ -1,160 +1,103 @@
 import { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-} from "@/components/ui/navigation-menu"
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const location = useLocation()
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    handleScroll()
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const scrollToSection = (sectionId: string) => {
-    if (location.pathname !== "/") {
-      // If not home, go home first
-      window.location.href = `/#${sectionId}`
-      return
-    }
-
-    const element = document.getElementById(sectionId)
-    if (element) element.scrollIntoView({ behavior: "smooth" })
-  }
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm py-4" : "bg-transparent py-6"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-8 md:px-16">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Top purple glow strip */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-700/20 via-indigo-600/10 to-purple-700/20 blur-2xl" />
+
+      <div
+        className={`transition-all duration-500 ${
+          scrolled
+            ? "bg-[#0b0f25]/80 backdrop-blur-xl"
+            : "bg-[#0b0f25]/60 backdrop-blur-md"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-10 lg:px-16 h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-h3 font-medium text-foreground">
+          <div className="text-white text-2xl font-semibold tracking-wide">
             Easy Hunt
-          </Link>
+          </div>
 
           {/* Desktop Nav */}
-          <NavigationMenu className="hidden md:block">
-            <NavigationMenuList className="gap-8">
-              <NavigationMenuItem>
-                <button
-                  onClick={() => scrollToSection("home")}
-                  className="text-body text-gray-300 hover:text-primary transition-colors"
-                >
-                  Home
-                </button>
-              </NavigationMenuItem>
+          <nav className="hidden md:flex items-center gap-12 text-[15px] text-gray-300">
+            <NavLink>Home</NavLink>
+            <NavLink>Features</NavLink>
+            <NavLink>How it Works</NavLink>
+            <NavLink>Pricing</NavLink>
+            <NavLink>Resources</NavLink>
+            <NavLink>Contact</NavLink>
+          </nav>
 
-              <NavigationMenuItem>
-                <button
-                  onClick={() => scrollToSection("features")}
-                  className="text-body text-gray-300 hover:text-primary transition-colors"
-                >
-                  Features
-                </button>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <button
-                  onClick={() => scrollToSection("faq")}
-                  className="text-body text-gray-300 hover:text-primary transition-colors"
-                >
-                  FAQs
-                </button>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <Link
-                  to="/articles"
-                  className="text-body text-gray-300 hover:text-primary transition-colors"
-                >
-                  Articles
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-
-          {/* CTA */}
-          <Button size="lg" variant="default" className="hidden md:inline-flex">
-            Book a Demo
-          </Button>
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <button className="px-7 py-3 rounded-xl text-white text-sm font-medium bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg shadow-purple-700/30 hover:shadow-purple-700/50 transition-all">
+              Book a Demo
+            </button>
+          </div>
 
           {/* Mobile Toggle */}
           <button
-            onClick={() => setIsMobileMenuOpen((v) => !v)}
-            className="md:hidden text-foreground"
-            aria-label="Toggle menu"
+            className="md:hidden text-white"
+            onClick={() => setOpen(!open)}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {open ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="md:hidden mt-4 space-y-4 glass-card p-4 rounded-2xl"
-            >
-              <button
-                onClick={() => {
-                  scrollToSection("home")
-                  setIsMobileMenuOpen(false)
-                }}
-                className="block w-full text-left text-body text-gray-300 hover:text-primary transition-colors py-2"
-              >
-                Home
-              </button>
-
-              <button
-                onClick={() => {
-                  scrollToSection("features")
-                  setIsMobileMenuOpen(false)
-                }}
-                className="block w-full text-left text-body text-gray-300 hover:text-primary transition-colors py-2"
-              >
-                Features
-              </button>
-
-              <button
-                onClick={() => {
-                  scrollToSection("faq")
-                  setIsMobileMenuOpen(false)
-                }}
-                className="block w-full text-left text-body text-gray-300 hover:text-primary transition-colors py-2"
-              >
-                FAQs
-              </button>
-
-              <Link
-                to="/articles"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left text-body text-gray-300 hover:text-primary transition-colors py-2"
-              >
-                Articles
-              </Link>
-
-              <Button size="lg" variant="default" className="w-full">
-                Book a Demo
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            className="md:hidden mx-6 mt-3 rounded-2xl bg-[#0b0f25]/95 backdrop-blur-xl border border-white/10 p-6 space-y-5 text-gray-300"
+          >
+            <MobileLink>Home</MobileLink>
+            <MobileLink>Features</MobileLink>
+            <MobileLink>How it Works</MobileLink>
+            <MobileLink>Pricing</MobileLink>
+            <MobileLink>Resources</MobileLink>
+            <MobileLink>Contact</MobileLink>
+
+            <button className="w-full mt-2 px-6 py-3 rounded-xl text-white bg-gradient-to-r from-indigo-500 to-purple-600">
+              Book a Demo
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
+  )
+}
+
+/* Desktop Link */
+function NavLink({ children }: { children: React.ReactNode }) {
+  return (
+    <button className="relative hover:text-white transition-colors duration-300 group">
+      {children}
+      <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-purple-500 transition-all group-hover:w-full" />
+    </button>
+  )
+}
+
+/* Mobile Link */
+function MobileLink({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="text-base hover:text-white transition-colors cursor-pointer">
+      {children}
+    </div>
   )
 }

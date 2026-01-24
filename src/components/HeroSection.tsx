@@ -19,10 +19,18 @@ export default function HeroSection() {
     if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
+      gsap.from(".hero-badge", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      })
+
       gsap.from(".hero-title", {
         y: 50,
         opacity: 0,
         duration: 1,
+        delay: 0.2,
         ease: "power3.out",
       })
 
@@ -30,7 +38,7 @@ export default function HeroSection() {
         y: 30,
         opacity: 0,
         duration: 1,
-        delay: 0.3,
+        delay: 0.4,
         ease: "power3.out",
       })
 
@@ -53,8 +61,8 @@ export default function HeroSection() {
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0d1a]">
-        {/* Particles */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0d1a] via-[#0b0f25] to-[#0a0d1a]">
+        {/* Floating particles */}
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -81,19 +89,16 @@ export default function HeroSection() {
         style={{ y, opacity }}
         className="relative z-20 text-center px-6 max-w-4xl"
       >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-6 py-3 glass-card mb-10 mx-auto"
-        >
+        {/* 🔥 Badge (Spacing Fixed Here) */}
+        <div className="hero-badge inline-flex items-center gap-2 px-6 py-3 glass-card mt-20 md:mt-28 mb-10 mx-auto">
           <Sparkles className="w-4 h-4 text-primary" />
           <span className="text-sm text-primary font-medium">
             Powered by AI
           </span>
-        </motion.div>
+        </div>
 
-        <h1 className="hero-title text-h1 md:text-6xl lg:text-7xl font-bold mb-6 text-gradient-1">
+        {/* Title */}
+        <h1 className="hero-title text-h1 md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
           Experience{" "}
           <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
             Speed
@@ -105,17 +110,19 @@ export default function HeroSection() {
           with Easy Hunt
         </h1>
 
+        {/* Subtitle */}
         <p className="hero-subtitle text-body text-gray-300 max-w-2xl mx-auto mb-10">
           Powerful keyword-based property document intelligence for faster and safer due diligence.
           Built for lawyers, title consultants, developers, banks, and NBFCs.
         </p>
 
+        {/* Buttons */}
         <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" className="relative px-10 py-6">
-            Get Started
+          <Button size="lg" className="relative px-10 py-6 bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 transition">
+            Get Started →
           </Button>
 
-          <Button size="lg" variant="outline" className="px-10 py-6">
+          <Button size="lg" variant="outline" className="px-10 py-6 border-white/20 text-white hover:bg-white/10">
             Learn More
           </Button>
         </div>
