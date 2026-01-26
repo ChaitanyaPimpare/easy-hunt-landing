@@ -4,7 +4,7 @@ import { Globe2, Zap, Shield } from "lucide-react"
 
 export default function TransactionSection() {
   return (
-    <section className="relative py-28 overflow-hidden bg-gradient-to-br from-[#060714] via-[#0b0e2a] to-[#120c2f]">
+    <section id="platform" className="relative py-28 overflow-hidden bg-gradient-to-br from-[#060714] via-[#0b0e2a] to-[#120c2f]">
       {/* Grid Background */}
       <div className="absolute inset-0 opacity-20">
         <div

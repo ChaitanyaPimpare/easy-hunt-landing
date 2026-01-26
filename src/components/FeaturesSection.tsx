@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Shield, Zap, Lock, Users } from "lucide-react"
+import { Shield, Zap, Lock, Users, Cpu } from "lucide-react"
 
 export default function FeaturesSection() {
   const features = [
@@ -8,95 +8,110 @@ export default function FeaturesSection() {
       title: "Secure & Trusted",
       description:
         "Government-sourced data processed securely for reliable property research.",
-      iconBg: "from-pink-500 to-purple-500",
-      barGlow: "from-purple-500/30 to-pink-500/20",
+      color: "from-pink-500 to-purple-500",
     },
     {
       icon: Zap,
       title: "Keyword-Based Search",
       description:
         "Search owner names, survey numbers, CTS, villages, and litigation terms instantly.",
-      iconBg: "from-blue-500 to-cyan-500",
-      barGlow: "from-blue-500/30 to-cyan-500/20",
+      color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Lock,
       title: "Complete Record View",
       description:
         "Access full matching property records without missing critical details.",
-      iconBg: "from-pink-500 to-purple-500",
-      barGlow: "from-purple-500/30 to-pink-500/20",
+      color: "from-pink-500 to-purple-500",
     },
     {
       icon: Users,
       title: "High Performance",
       description:
         "Reduce document search time from hours to seconds.",
-      iconBg: "from-blue-500 to-cyan-500",
-      barGlow: "from-blue-500/30 to-cyan-500/20",
+      color: "from-blue-500 to-cyan-500",
     },
   ]
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-[#070b1a] to-[#0b1026] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 md:px-16 relative z-10">
+    <section id="how-it-works" className="relative py-28 md:py-36 bg-[#070b1a] overflow-hidden">
+      {/* Grid Background */}
+      <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+      {/* Decorative chip icon */}
+      <Cpu className="absolute right-20 top-24 w-20 h-20 text-purple-500/20 hidden md:block" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-16">
+        {/* Badge */}
+        <div className="flex justify-center mb-6">
+          <div className="flex items-center gap-2 px-5 py-2 rounded-full bg-purple-600/10 border border-purple-500/20 text-purple-400 text-sm">
+            <Shield className="w-4 h-4" />
+            Trusted Platform
+          </div>
+        </div>
+
+        {/* Title */}
+        <h2 className="text-center text-4xl md:text-5xl font-semibold text-white mb-4">
+          Secure & trusted
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-center text-gray-400 max-w-2xl mx-auto mb-16">
+          Government-sourced data processed securely for reliable property research
+        </p>
+
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-
-            return (
-              <motion.div
-                key={index}
-                className="group relative rounded-3xl p-[1px] bg-gradient-to-br from-purple-500/30 via-blue-500/20 to-transparent"
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-              >
-                {/* OUTER GLOW FRAME */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-600/20 to-blue-600/20 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
-
-                {/* INNER CARD */}
-                <div className="relative rounded-3xl bg-[#0d132d]/80 backdrop-blur-xl p-8 border border-white/10 group-hover:border-purple-400/40 transition-all duration-500 overflow-hidden">
-
-                  {/* ICON + BAR CONTAINER */}
-                  <div className="relative h-20 mb-8 flex items-center">
-
-                    {/* RECTANGLE BAR */}
-                    <motion.div
-                      variants={{
-                        rest: { x: 0, rotate: 0 },
-                        hover: { x: 140, rotate: 6 },
-                      }}
-                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                      className={`absolute left-0 w-56 h-16 rounded-2xl bg-gradient-to-r ${feature.barGlow} border border-white/10 shadow-lg`}
-                    />
-
-                    {/* ICON BOX */}
-                    <motion.div
-                      variants={{
-                        rest: { x: 0 },
-                        hover: { x: 180 },
-                      }}
-                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                      className={`relative w-16 h-16 rounded-xl bg-gradient-to-br ${feature.iconBg} flex items-center justify-center shadow-xl`}
-                    >
-                      <Icon className="w-7 h-7 text-white" />
-                    </motion.div>
-                  </div>
-
-                  {/* TEXT */}
-                  <h3 className="text-xl font-semibold text-white mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed text-sm">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
-            )
-          })}
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} index={index} />
+          ))}
         </div>
       </div>
     </section>
+  )
+}
+
+/* ================= CARD ================= */
+
+function FeatureCard({ feature, index }: any) {
+  const Icon = feature.icon
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="relative rounded-3xl h-full"
+    >
+      {/* Outer Border Glow */}
+      <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-white/10 to-white/5 opacity-60" />
+
+      {/* Card */}
+      <div className="relative h-full rounded-3xl bg-[#0c122b]/85 backdrop-blur-xl border border-white/10 p-8 flex flex-col justify-start">
+
+        {/* Icon + Rectangle */}
+        <div className="relative h-16 mb-8 flex items-center">
+          <div
+            className={`absolute left-0 h-14 w-44 rounded-2xl bg-gradient-to-r ${feature.color} opacity-15`}
+          />
+
+          <div
+            className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-lg`}
+          >
+            <Icon className="w-6 h-6 text-white" />
+          </div>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-white mb-3">
+          {feature.title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-gray-400 text-sm leading-relaxed">
+          {feature.description}
+        </p>
+      </div>
+    </motion.div>
   )
 }

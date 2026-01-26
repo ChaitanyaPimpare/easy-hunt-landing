@@ -49,7 +49,7 @@ export default function ShowcaseSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 bg-gradient-to-b from-[#070a18] to-[#0b0f25] overflow-hidden"
+     id="how it works" className="relative py-32 bg-gradient-to-b from-[#070a18] to-[#0b0f25] overflow-hidden"
     >
       {/* Background Glow */}
       <div className="absolute inset-0">
