@@ -1,94 +1,80 @@
 import { motion } from "framer-motion"
 
-export default function OrbitAnimation() {
+export default function TechPlanet() {
   return (
-    <div className="relative w-full max-w-[520px] aspect-square mx-auto">
-      {/* Outer Glow Ring */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/10 to-blue-500/10 blur-2xl" />
+    <div className="relative w-full max-w-[520px] aspect-square mx-auto flex items-center justify-center overflow-visible">
 
-      {/* Orbit Ring */}
-      <div className="absolute inset-[8%] rounded-full border border-purple-500/10 bg-purple-500/5" />
+      {/* 🌌 Deep space atmosphere glow */}
+      <div className="absolute w-[520px] h-[520px] rounded-full bg-blue-600/10 blur-[140px]" />
+      <div className="absolute w-[420px] h-[420px] rounded-full bg-indigo-500/10 blur-[120px]" />
 
-      {/* Center Planet */}
+      {/* ✨ Star particles in background */}
+      <Stars />
+
+      {/* 🌍 Rotating Planet */}
       <motion.div
-        className="absolute inset-0 m-auto w-[220px] h-[220px] rounded-full bg-[#0B0F1F] shadow-[0_0_60px_rgba(168,85,247,0.35)] flex items-center justify-center"
+        className="relative w-[380px] h-[380px]"
         animate={{ rotate: 360 }}
-        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/20 to-blue-500/10 blur-xl" />
-
-        {/* Center Icon */}
-        <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-500/25 to-purple-500/25 border border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.25)]">
-          <div className="w-6 h-6 border-r-4 border-t-4 border-purple-400 rotate-45 rounded-sm" />
-        </div>
-      </motion.div>
-
-      {/* 3D Orbit Group */}
-      <motion.div
-        className="absolute inset-0"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        style={{
-          transformStyle: "preserve-3d",
+        transition={{
+          duration: 80, // slow planet rotation
+          repeat: Infinity,
+          ease: "linear",
         }}
+        style={{ transformStyle: "preserve-3d" }}
       >
-        {/* Orbit cubes - FARTHER like 2nd image */}
-        <OrbitCube angle={30} radius={220} depth={40} />
-        <OrbitCube angle={120} radius={220} depth={-50} />
-        <OrbitCube angle={210} radius={220} depth={25} />
-        <OrbitCube angle={300} radius={220} depth={-35} />
+        {/* Outer glow aura */}
+        <div className="absolute inset-0 rounded-full bg-blue-400/20 blur-3xl scale-110" />
 
-        {/* Small dots orbit */}
-        <OrbitDot angle={70} radius={160} />
-        <OrbitDot angle={250} radius={160} />
+        {/* Planet image */}
+        <img
+          src="/tech-planet.png"
+          alt="Tech Planet"
+          className="w-full h-full object-contain"
+          style={{
+            mixBlendMode: "screen",   // makes dark parts disappear into bg
+            filter: "drop-shadow(0 0 40px rgba(59,130,246,0.7))",
+          }}
+        />
+
+        {/* Subtle inner shading for depth */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-transparent to-black/30" />
       </motion.div>
+
+      {/* 🌠 Floating micro particles around planet */}
+      <FloatingParticle angle={40} radius={210} delay={0} />
+      <FloatingParticle angle={120} radius={230} delay={1} />
+      <FloatingParticle angle={200} radius={215} delay={2} />
+      <FloatingParticle angle={300} radius={240} delay={3} />
     </div>
   )
 }
 
-/** Cube orbit element */
-function OrbitCube({
-  angle,
-  radius,
-  depth,
-}: {
-  angle: number
-  radius: number
-  depth: number
-}) {
+function FloatingParticle({ angle, radius, delay }: { angle: number; radius: number; delay: number }) {
   return (
     <motion.div
-      className="absolute left-1/2 top-1/2"
-      style={{
-        transform: `rotate(${angle}deg) translateX(${radius}px) translateZ(${depth}px)`,
-        transformStyle: "preserve-3d",
-      }}
-    >
-      <motion.div
-        className="w-16 h-16 rounded-2xl bg-[#0b1022] border border-purple-400/30 shadow-[0_0_25px_rgba(168,85,247,0.35)] flex items-center justify-center"
-        animate={{
-          rotateZ: [0, 10, 0, -10, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.8)]" />
-      </motion.div>
-    </motion.div>
+      className="absolute left-1/2 top-1/2 w-2.5 h-2.5 rounded-full bg-blue-300 shadow-[0_0_12px_rgba(147,197,253,0.9)]"
+      style={{ transform: `rotate(${angle}deg) translateX(${radius}px)` }}
+      animate={{ y: [0, -12, 0], opacity: [0.3, 1, 0.3], scale: [1, 1.6, 1] }}
+      transition={{ duration: 4, repeat: Infinity, delay, ease: "easeInOut" }}
+    />
   )
 }
 
-/** Dot orbit element */
-function OrbitDot({ angle, radius }: { angle: number; radius: number }) {
+function Stars() {
   return (
-    <motion.div
-      className="absolute left-1/2 top-1/2 w-3 h-3 bg-pink-500 rounded-full shadow-[0_0_15px_rgba(236,72,153,0.9)]"
-      style={{
-        transform: `rotate(${angle}deg) translateX(${radius}px)`,
-      }}
-    />
+    <>
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-blue-200 rounded-full opacity-40"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+          }}
+          animate={{ opacity: [0.2, 1, 0.2] }}
+          transition={{ duration: 3 + Math.random() * 2, repeat: Infinity }}
+        />
+      ))}
+    </>
   )
 }

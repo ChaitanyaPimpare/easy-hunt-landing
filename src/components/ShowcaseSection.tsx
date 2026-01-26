@@ -23,7 +23,7 @@ export default function ShowcaseSection() {
     {
       icon: Globe,
       title: "Export & Documentation",
-      description: "Download results in PDF or Excel formats.",
+      description: "Download results in PDF or Excel formats instantly and securely.",
       gradient: "from-fuchsia-500 to-purple-600",
     },
     {
