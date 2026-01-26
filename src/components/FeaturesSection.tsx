@@ -34,12 +34,25 @@ export default function FeaturesSection() {
   ]
 
   return (
-    <section id="how-it-works" className="relative py-28 md:py-36 bg-[#070b1a] overflow-hidden">
+    <section
+  id="how-it-works"
+  className="relative pt-16 pb-28 md:pt-20 md:pb-36 bg-[#070b1a] overflow-hidden"
+>
+
       {/* Grid Background */}
       <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       {/* Decorative chip icon */}
-      <Cpu className="absolute right-20 top-24 w-20 h-20 text-purple-500/20 hidden md:block" />
+     <motion.div
+  className="absolute right-20 top-24 hidden md:block"
+  animate={{ rotate: 360, scale: [1, 1.08, 1] }}
+  transition={{
+    rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+    scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+  }}
+>
+  <Cpu className="w-20 h-20 text-purple-500/20 drop-shadow-[0_0_12px_rgba(168,85,247,0.6)]" />
+</motion.div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-16">
         {/* Badge */}
@@ -67,6 +80,7 @@ export default function FeaturesSection() {
           ))}
         </div>
       </div>
+      
     </section>
   )
 }
