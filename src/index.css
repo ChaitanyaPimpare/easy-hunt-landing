@@ -101,3 +101,40 @@ body {
 .preserve-3d {
   transform-style: preserve-3d;
 }
+/* ======================================
+   Curved Bottom Glow + Shadow Support
+====================================== */
+
+.bottom-glow {
+  position: relative;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.bottom-glow::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -1px;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 92, 246, 0.95),
+    rgba(59, 130, 246, 0.95),
+    transparent
+  );
+
+  border-radius: 999px;
+  filter: blur(1.2px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* show glow on hover */
+.group:hover .bottom-glow::after {
+  opacity: 1;
+}

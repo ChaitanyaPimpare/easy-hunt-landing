@@ -33,13 +33,31 @@ export default function TransactionSection() {
               animate={{ rotate: 360 }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
-              <div className="w-32 h-32 rounded-full border border-blue-400/40 flex items-center justify-center">
-                <div className="w-20 h-20 border-4 border-blue-400 rounded-full relative">
-                  <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-0 left-1/2 -translate-x-1/2" />
-                  <div className="absolute w-3 h-3 bg-blue-400 rounded-full bottom-0 left-1/2 -translate-x-1/2" />
-                  <div className="absolute w-3 h-3 bg-blue-400 rounded-full left-0 top-1/2 -translate-y-1/2" />
-                  <div className="absolute w-3 h-3 bg-blue-400 rounded-full right-0 top-1/2 -translate-y-1/2" />
-                </div>
+              {/* Inner Ring */}
+              <div className="w-32 h-32 rounded-full border border-blue-400/40 flex items-center justify-center relative">
+
+               {/* 🔥 Blinking Easy Hunt Logo (BIGGER) */}
+<motion.img
+  src="/easyhunt-logo.png"
+  alt="Easy Hunt"
+  className="w-24 h-24 object-contain drop-shadow-[0_0_60px_rgba(59,130,246,1)]"
+  animate={{
+    opacity: [0.6, 1, 0.6],
+    scale: [0.95, 1.12, 0.95],
+  }}
+  transition={{
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
+
+
+                {/* Orbit Dots */}
+                <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-0 left-1/2 -translate-x-1/2" />
+                <div className="absolute w-3 h-3 bg-blue-400 rounded-full bottom-0 left-1/2 -translate-x-1/2" />
+                <div className="absolute w-3 h-3 bg-blue-400 rounded-full left-0 top-1/2 -translate-y-1/2" />
+                <div className="absolute w-3 h-3 bg-blue-400 rounded-full right-0 top-1/2 -translate-y-1/2" />
               </div>
             </motion.div>
 
@@ -120,15 +138,11 @@ function FloatingCard({ top, left, right, delay }: any) {
         ease: "easeOut",
       }}
     >
-      {/* Top glowing indicator dot */}
       <div className="absolute top-2 left-3 w-2.5 h-2.5 bg-green-400 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.9)]" />
-
-      {/* Fake UI lines */}
       <div className="absolute top-3 left-8 right-4 h-2 bg-blue-300/30 rounded-full" />
       <div className="absolute top-8 left-6 right-6 h-2 bg-blue-300/20 rounded-full" />
       <div className="absolute top-12 left-10 right-10 h-2 bg-blue-300/10 rounded-full" />
 
-      {/* Soft pulsing border glow */}
       <motion.div
         className="absolute inset-0 rounded-xl border border-blue-400/20"
         animate={{ opacity: [0.3, 0.8, 0.3] }}
@@ -138,7 +152,6 @@ function FloatingCard({ top, left, right, delay }: any) {
   )
 }
 
-/* Feature Row */
 function Feature({ icon: Icon, text, color }: { icon: any; text: string; color: string }) {
   return (
     <div className="flex items-center gap-4">

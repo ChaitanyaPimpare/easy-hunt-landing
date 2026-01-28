@@ -18,6 +18,8 @@ export default function ShowcaseSection() {
 
   return (
     <section ref={sectionRef} className="relative py-32 bg-gradient-to-b from-[#070a18] to-[#0b0f25] overflow-hidden">
+      
+      {/* Background Glow */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 blur-3xl rounded-full" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 blur-3xl rounded-full" />
@@ -31,8 +33,12 @@ export default function ShowcaseSection() {
           className="text-center mb-20"
         >
           <p className="text-sm tracking-widest text-indigo-400 mb-4">Platform Features</p>
-          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">Everything you need in one platform</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">Complete property document intelligence for faster and safer due diligence.</p>
+          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
+            Everything you need in one platform
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Complete property document intelligence for faster and safer due diligence.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -46,71 +52,69 @@ export default function ShowcaseSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-              <Card className="group relative rounded-3xl bg-[#0c122b]/80 backdrop-blur-xl border border-white/10 overflow-hidden p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_60px_rgba(124,58,237,0.35)]">
+                <Card className="group relative rounded-3xl bg-white/[0.04] backdrop-blur-xl border border-white/10 overflow-hidden p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_80px_rgba(124,58,237,0.35)]">
 
- {/* 🌈 TOP GLOWING RECTANGLE */}
-<div className="relative h-24 mb-8 rounded-2xl overflow-hidden flex items-center">
+                  {/* ✨ TOP GLOW BAR */}
+                  <div className="relative h-24 mb-8 rounded-2xl overflow-hidden flex items-center">
 
-  {/* 🌌 Deep base gradient */}
-  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-25`} />
+                    {/* Deep Base */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-20`} />
 
-  {/* ✨ Soft ambient glow bloom */}
-  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/5 blur-2xl opacity-40" />
+                    {/* Ambient Bloom */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/5 blur-2xl opacity-40" />
 
-  {/* 🌊 Slow moving color flow */}
-  <motion.div
-    className={`absolute inset-0 bg-gradient-to-r ${item.gradient}`}
-    initial={{ backgroundPosition: "0% 50%" }}
-    whileHover={{ backgroundPosition: "100% 50%" }}
-    transition={{ duration: 6, ease: "linear", repeat: Infinity }}
-    style={{ backgroundSize: "200% 200%", opacity: 0.25 }}
-  />
+                    {/* Moving Color Flow */}
+                    <motion.div
+                      className={`absolute inset-0 bg-gradient-to-r ${item.gradient}`}
+                      initial={{ backgroundPosition: "0% 50%" }}
+                      whileHover={{ backgroundPosition: "100% 50%" }}
+                      transition={{ duration: 8, ease: "linear", repeat: Infinity }}
+                      style={{ backgroundSize: "200% 200%", opacity: 0.3 }}
+                    />
 
-  {/* 🌫️ Soft floating glow particles */}
-  {[...Array(4)].map((_, i) => (
-    <motion.div
-      key={i}
-      className="absolute w-6 h-6 rounded-full bg-white/20 blur-xl"
-      animate={{ y: [0, -15, 0], x: [0, 10, 0], opacity: [0.2, 0.6, 0.2] }}
-      transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.8 }}
-      style={{
-        top: `${30 + i * 12}%`,
-        left: `${50 + i * 8}%`,
-      }}
-    />
-  ))}
+                    {/* Soft Floating Glow Orbs */}
+                    {[...Array(3)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-8 h-8 rounded-full bg-white/20 blur-2xl"
+                        animate={{ y: [0, -20, 0], opacity: [0.2, 0.6, 0.2] }}
+                        transition={{ duration: 6 + i, repeat: Infinity, delay: i }}
+                        style={{ top: `${30 + i * 18}%`, left: `${55 + i * 10}%` }}
+                      />
+                    ))}
 
-  {/* 💫 Subtle moving light streak */}
-  <motion.div
-    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
-    initial={{ x: "-100%" }}
-    whileHover={{ x: "100%" }}
-    transition={{ duration: 2.5, ease: "linear" }}
-  />
+                    {/* Light Sweep */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 2, ease: "linear" }}
+                    />
 
-  {/* 🚀 Floating icon */}
-  <motion.div
-    initial={{ x: 0 }}
-    whileHover={{ x: 150 }}
-    transition={{ type: "spring", stiffness: 120, damping: 12 }}
-    className={`relative z-20 ml-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.35)] backdrop-blur-md border border-white/10`}
-  >
-    <Icon className="w-8 h-8 text-white" />
-  </motion.div>
-</div>
+                    {/* Floating Icon */}
+                    <motion.div
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 140 }}
+                      transition={{ type: "spring", stiffness: 120, damping: 12 }}
+                      className={`relative z-20 ml-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.35)] border border-white/10 backdrop-blur-md`}
+                    >
+                      <Icon className="w-8 h-8 text-white" />
+                    </motion.div>
+                  </div>
 
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                    {item.title}
+                  </h3>
 
-  {/* Title */}
-  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
-    {item.title}
-  </h3>
+                  {/* Description */}
+                  <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                    {item.description}
+                  </p>
 
-  {/* Description */}
-  <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-    {item.description}
-  </p>
-</Card>
-
+                  {/* Inner Soft Edge Glow */}
+                  <div className="absolute inset-0 rounded-3xl pointer-events-none bg-gradient-to-b from-white/5 via-transparent to-transparent opacity-40" />
+                </Card>
               </motion.div>
             )
           })}
