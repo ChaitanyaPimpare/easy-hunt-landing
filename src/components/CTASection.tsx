@@ -44,14 +44,14 @@ export default function CTASection() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT ANIMATED GRAPHIC */}
+        {/* RIGHT VISUAL WITH LOGO */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="relative flex justify-center items-center"
         >
-          <div className="relative w-[420px] h-[420px]">
+          <div className="relative w-[420px] h-[420px] flex items-center justify-center">
 
             {/* Outer rotating ring */}
             <motion.div
@@ -60,37 +60,32 @@ export default function CTASection() {
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* Inner purple ring */}
+            {/* Inner rotating ring */}
             <motion.div
               className="absolute inset-10 rounded-full border border-purple-400/40"
               animate={{ rotate: -360 }}
               transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* Center circle glow */}
+            {/* Center glow */}
             <div className="absolute inset-20 rounded-full bg-purple-700/40 blur-2xl" />
 
-            {/* Triangle shield shape */}
-            <motion.div
-              className="absolute inset-0 flex items-center justify-center"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            >
-              <svg width="240" height="240" viewBox="0 0 200 200">
-                <polygon
-                  points="100,20 180,170 20,170"
-                  fill="none"
-                  stroke="url(#grad)"
-                  strokeWidth="3"
-                />
-                <defs>
-                  <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#f65c5c" />
-                    <stop offset="100%" stopColor="#22ee96" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </motion.div>
+            {/* 🌟 EASY HUNT LOGO */}
+            <motion.img
+              src="/easyhunt-logo.png"
+              alt="Easy Hunt"
+             className="relative z-10 w-56 h-56 object-contain drop-shadow-[0_0_90px_rgba(168,85,247,1)]"
+
+              animate={{
+                scale: [1, 1.08, 1],
+                opacity: [0.9, 1, 0.9],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
 
             {/* Glow overlay */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/20 via-cyan-400/10 to-transparent blur-2xl" />

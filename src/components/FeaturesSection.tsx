@@ -15,13 +15,13 @@ export default function FeaturesSection() {
         "Deep keyword-based search across large Excel and PDF datasets.",
     },
     {
-      icon: "/icons/records.png",
+      icon: "/icons/pro.png",
       title: "Complete Records",
       description:
         "Access full matching property records without missing critical details.",
     },
     {
-      icon: "/icons/pro.png",
+      icon: "/icons/records.png",
       title: "Professional Grade",
       description:
         "Built for lawyers, consultants, and enterprise due-diligence teams.",
@@ -39,9 +39,9 @@ export default function FeaturesSection() {
   )
 }
 
-/* ================= CARD ================= */
-
 function FeatureCard({ feature, index }: any) {
+  const isLeftCard = index % 2 === 0
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -50,19 +50,27 @@ function FeatureCard({ feature, index }: any) {
       whileHover={{ y: -6 }}
       className="group relative"
     >
-      <div className="relative rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 p-10 h-full text-center transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(139,92,246,0.35)]">
-
-        {/* PNG ICON */}
-        <div className="flex justify-center mb-6">
-          <img
-            src={feature.icon}
-            alt={feature.title}
-            className="w-16 h-16 object-contain"
-          />
+      <div
+        className={`relative rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 p-10 h-full transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(139,92,246,0.35)]
+        ${isLeftCard ? "text-left" : "text-center"}`}
+      >
+        {/* ICON — CLEAN, NO BOX */}
+        <div
+          className={`mb-8 ${
+            isLeftCard ? "flex justify-start" : "flex justify-center"
+          }`}
+        >
+          <div className="w-24 h-24 flex items-center justify-center">
+            <img
+              src={feature.icon}
+              alt={feature.title}
+              className="w-full h-full object-contain p-2"
+            />
+          </div>
         </div>
 
         {/* TITLE */}
-        <h3 className="text-xl font-semibold text-white mb-3">
+        <h3 className="text-xl font-semibold text-white mb-4">
           {feature.title}
         </h3>
 

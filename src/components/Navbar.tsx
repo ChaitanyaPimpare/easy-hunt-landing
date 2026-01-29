@@ -80,11 +80,20 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-10 lg:px-16 h-[72px] flex items-center justify-between">
           {/* Logo */}
           <div
-            onClick={() => scrollToSection("home")}
-            className="text-white text-2xl font-semibold tracking-wide cursor-pointer"
-          >
-            Easy Hunt
-          </div>
+  onClick={() => scrollToSection("home")}
+  className="flex items-center gap-3 cursor-pointer select-none"
+>
+  <img
+    src="/easyhunt-logo.png"
+    alt="Easy Hunt Logo"
+    className="h-16 w-auto object-contain"
+
+  />
+  <span className="text-white text-2xl font-semibold tracking-wide">
+    Easy Hunt
+  </span>
+</div>
+
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-[15px]">

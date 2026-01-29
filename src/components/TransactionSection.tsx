@@ -19,7 +19,7 @@ export default function TransactionSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-        {/* ================= LEFT SIDE — ROTATING TECH VISUAL ================= */}
+        {/* ================= LEFT SIDE — TECH VISUAL ================= */}
         <div className="relative h-[520px] flex items-center justify-center">
           <div className="relative w-[420px] h-[420px] flex items-center justify-center">
 
@@ -27,31 +27,33 @@ export default function TransactionSection() {
             <div className="absolute w-[420px] h-[420px] rounded-full bg-blue-600/10 blur-[120px]" />
             <div className="absolute w-[320px] h-[320px] rounded-full bg-indigo-500/10 blur-[100px]" />
 
-            {/* Rotating Core */}
+            {/* 🔄 Rotating Outer Ring */}
             <motion.div
-              className="relative w-[240px] h-[240px] rounded-full bg-[#0b1020] flex items-center justify-center shadow-[0_0_80px_rgba(59,130,246,0.35)]"
+              className="absolute w-[260px] h-[260px] rounded-full border border-blue-500/30"
               animate={{ rotate: 360 }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            >
-              {/* Inner Ring */}
+            />
+
+            {/* 🧊 Static Core */}
+            <div className="relative w-[240px] h-[240px] rounded-full bg-[#0b1020] flex items-center justify-center shadow-[0_0_80px_rgba(59,130,246,0.35)]">
+
               <div className="w-32 h-32 rounded-full border border-blue-400/40 flex items-center justify-center relative">
 
-               {/* 🔥 Blinking Easy Hunt Logo (BIGGER) */}
-<motion.img
-  src="/easyhunt-logo.png"
-  alt="Easy Hunt"
-  className="w-24 h-24 object-contain drop-shadow-[0_0_60px_rgba(59,130,246,1)]"
-  animate={{
-    opacity: [0.6, 1, 0.6],
-    scale: [0.95, 1.12, 0.95],
-  }}
-  transition={{
-    duration: 3,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-/>
-
+                {/* ✨ BLINKING LOGO (NO ROTATION) */}
+                <motion.img
+                  src="/easyhunt-logo.png"
+                  alt="Easy Hunt"
+                  className="w-24 h-24 object-contain drop-shadow-[0_0_60px_rgba(59,130,246,1)]"
+                  animate={{
+                    opacity: [0.6, 1, 0.6],
+                    scale: [0.95, 1.12, 0.95],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
 
                 {/* Orbit Dots */}
                 <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-0 left-1/2 -translate-x-1/2" />
@@ -59,7 +61,7 @@ export default function TransactionSection() {
                 <div className="absolute w-3 h-3 bg-blue-400 rounded-full left-0 top-1/2 -translate-y-1/2" />
                 <div className="absolute w-3 h-3 bg-blue-400 rounded-full right-0 top-1/2 -translate-y-1/2" />
               </div>
-            </motion.div>
+            </div>
 
             {/* Radial Connection Lines */}
             {[0, 60, 120, 180, 240, 300].map((deg, i) => (
