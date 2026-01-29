@@ -36,3 +36,38 @@ npm install
 
 4️⃣ Run the project locally
 npm run dev
+<<<<<<< HEAD
+=======
+
+🚀 Deployment (Vercel)
+
+This project is deployed using Vercel.
+
+Steps to deploy:
+
+Push the project to GitHub
+
+Go to https://vercel.com
+
+Import the GitHub repository
+
+Select Vite / React
+
+Click Deploy
+
+After deployment, Vercel provides a live URL:
+
+https://easy-hunt-landing-rho.vercel.app/
+
+✨ Features
+
+Responsive design
+
+Modern UI
+
+Fast load time
+
+SEO-friendly layout
+
+Mobile & desktop compatible
+>>>>>>> ad54611 (update)
