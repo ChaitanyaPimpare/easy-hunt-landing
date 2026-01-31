@@ -86,7 +86,7 @@ export default function Navbar() {
   <img
     src="/easyhunt.png"
     alt="Easy Hunt Logo"
-    className="h-16 w-auto object-contain"
+    className="h-12 w-auto object-contain"
 
   />
  

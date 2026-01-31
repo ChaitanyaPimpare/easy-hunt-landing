@@ -124,12 +124,6 @@ export default function HeroSection() {
           safer due diligence.
         </p>
 
-        {/* 👥 Audience Line */}
-        <p className="text-gray-400 mb-12">
-          Built for lawyers, title consultants, real estate developers, banks,
-          and NBFCs
-        </p>
-
         {/* 🚀 CTA Buttons */}
         <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" className="flex items-center gap-2 px-10 py-3">
