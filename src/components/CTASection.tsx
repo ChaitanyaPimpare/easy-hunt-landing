@@ -72,7 +72,7 @@ export default function CTASection() {
 
             {/* 🌟 EASY HUNT LOGO */}
             <motion.img
-              src="/easyhunt-logo.png"
+              src="/easy.png"
               alt="Easy Hunt"
              className="relative z-10 w-56 h-56 object-contain drop-shadow-[0_0_90px_rgba(168,85,247,1)]"
 

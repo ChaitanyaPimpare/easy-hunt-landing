@@ -104,18 +104,19 @@ export default function HeroSection() {
           </span>
         </motion.div>
 
-        {/* 🏆 Headline */}
-        <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-          Experience{" "}
-          <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-            Speed
-          </span>{" "}
-          and{" "}
-          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Confidence
-          </span>{" "}
-          with Easy Hunt
-        </h1>
+   <h1 className="hero-title text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1]">
+  Experience{" "}
+  <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+    Speed
+  </span>
+  <br />
+  and{" "}
+  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+    Confidence
+  </span>
+  <br />
+  with Easy Hunt
+</h1>
 
         {/* 📝 Subtitle */}
         <p className="hero-subtitle text-gray-300 max-w-2xl mx-auto mb-10">
