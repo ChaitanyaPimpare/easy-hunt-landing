@@ -49,17 +49,23 @@ function FeatureCard({ feature, index }: any) {
       className="group relative"
     >
       <div className="relative rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 p-10 h-full transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(139,92,246,0.35)] text-left flex flex-col">
-        
-        {/* ICON */}
-        <div className="mb-8 flex justify-start">
-          <div className="w-24 h-24 flex items-center justify-center">
-            <img
-              src={feature.icon}
-              alt={feature.title}
-              className="w-full h-full object-contain p-2"
-            />
-          </div>
-        </div>
+      {/* ICON */}
+<div className="mb-8 flex justify-start">
+  <div
+    className={`flex items-center justify-center ${
+      feature.icon.includes("pro.png")
+          ? "w-28 h-28"   // 👈 reduced from 32 → 28 // 👈 Bigger ONLY for pro.png
+        : "w-24 h-24"
+    }`}
+  >
+    <img
+      src={feature.icon}
+      alt={feature.title}
+      className="w-full h-full object-contain p-2"
+    />
+  </div>
+</div>
+
 
         {/* TITLE */}
         <h3 className="text-xl font-semibold text-white mb-4">
