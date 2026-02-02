@@ -29,7 +29,7 @@ export default function FeaturesSection() {
   ]
 
   return (
-    <section className="relative py-28 bg-gradient-to-br from-[#140a2a] via-[#1a0f35] to-[#2a0f4a] overflow-hidden">
+    <section id="how-it-works" className="relative py-28 bg-gradient-to-br from-[#140a2a] via-[#1a0f35] to-[#2a0f4a] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
         {features.map((feature, index) => (
           <FeatureCard key={index} feature={feature} index={index} />
