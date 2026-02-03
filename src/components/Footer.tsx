@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-h3 font-medium mb-6 text-foreground">
+            <h3 className="text-[18px] font-medium mb-6 text-foreground">
               Easy Hunt
             </h3>
             <p className="text-body text-gray-300">
@@ -22,7 +22,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-label font-medium mb-6 text-foreground">
+            <h4 className="text-[18px] font-medium mb-6 text-foreground">
               Quick Links
             </h4>
 
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-label font-medium mb-6 text-foreground">
+            <h4 className="text-[18px] font-medium mb-6 text-foreground">
               Contact
             </h4>
 
